@@ -20,6 +20,5 @@
         let shuffledGenerator = helper.getGenerator(cmp, helper, shuffledPromises, 'v.shuffledCol');
         const shuffledIterable = shuffledGenerator();
         helper.promiseChain(shuffledIterable, shuffledIterable.next());
-
     }
 });
