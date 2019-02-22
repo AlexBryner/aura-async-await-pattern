@@ -26,10 +26,10 @@
     },
 
     // Calls and Resolves Promises Recursively, needed to manage the generator function
-    promiseChain: function (iter, nextValue) {
+    promiseResolver: function (iter, nextValue) {
         if (!nextValue.done) {
             nextValue.value.then(result => {
-                this.promiseChain(iter, iter.next(result));
+                this.promiseResolver(iter, iter.next(result));
             })
         }
     },

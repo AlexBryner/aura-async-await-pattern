@@ -9,16 +9,16 @@
 
         let orderedGenerator = helper.getGenerator(cmp, helper, orderedPromises, 'v.orderedCol');
         const orderedIterable = orderedGenerator();
-        helper.promiseChain(orderedIterable, orderedIterable.next());
+        helper.promiseResolver(orderedIterable, orderedIterable.next());
 
 
         let reversedGenerator = helper.getGenerator(cmp, helper, reversePromises, 'v.reversedCol');
         const reversedIterable = reversedGenerator();
-        helper.promiseChain(reversedIterable, reversedIterable.next());
+        helper.promiseResolver(reversedIterable, reversedIterable.next());
 
 
         let shuffledGenerator = helper.getGenerator(cmp, helper, shuffledPromises, 'v.shuffledCol');
         const shuffledIterable = shuffledGenerator();
-        helper.promiseChain(shuffledIterable, shuffledIterable.next());
+        helper.promiseResolver(shuffledIterable, shuffledIterable.next());
     }
 });
