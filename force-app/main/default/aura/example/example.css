@@ -1,2 +1,9 @@
-.THIS {
+.THIS.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.THIS .column {
+    text-align: center;
 }
