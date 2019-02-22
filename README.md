@@ -76,7 +76,7 @@ The generator is it is returning an [iterable](https://developer.mozilla.org/en-
  <tr>
     <td style="border: none;">
         <div>const iterable = generatorFunction( );</div>
-        <div>promiseResolver( helper, iterable, iterable.next( ) );</div>
+        <div>promiseResolver( iterable, iterable.next( ) );</div>
     </td>
     <td style="border: none;">
         <div>asyncCall( );</div>
