@@ -54,7 +54,7 @@
 
     getPromiseList: function (sort) {
         let promises = [];
-        for (let i = 1; i < 10; i++) {
+        for (let i = 0; i < 10; i++) {
             const seconds = i * 500;
             promises.push(this.asyncPromiseWrapper(this.demoFunction, seconds));
         }
