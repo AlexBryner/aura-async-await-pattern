@@ -90,3 +90,5 @@ The generator is it is returning an [iterable](https://developer.mozilla.org/en-
 In the Aura Example Component there are 3 list of promises with each promise running a set timeout with different times.  For demonstration purposes the lists are rendered in order of the timeouts, reversed, and also shuffled.  This demonstrates that while the set timeouts are resolving on their own time, the generator resolves them in the order they hit the yield statements.
 
 This means that if a short timeout is supposed to be processed after a long timeout, the generator will hold the promise resolve returned from the short timeout until after the longer one comes around, and then they will both seemingly be processed at the same time.  I added in the last timeout from within the generator to showcase how much easier it can be to manage chaining async work with this pattern.
+
+![](demo.gif)
