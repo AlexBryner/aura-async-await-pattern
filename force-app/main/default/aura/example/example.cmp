@@ -1,0 +1,12 @@
+<aura:component>
+
+    <aura:attribute name="numbers" type="String[]" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:iteration items="{!v.numbers}" var="number">
+        <div>
+            <h1>{!number}</h1>
+        </div>
+    </aura:iteration>
+</aura:component>
