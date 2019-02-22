@@ -56,7 +56,7 @@
         let promises = [];
         for (let i = 1; i < 10; i++) {
             const seconds = i * 500;
-            promises.push(this.asyncPromiseWrapper(this.dummyFunction, seconds));
+            promises.push(this.asyncPromiseWrapper(this.demoFunction, seconds));
         }
 
         if (sort === 'reverse') {
@@ -68,7 +68,7 @@
         return promises;
     },
 
-    dummyFunction: function (i) {
+    demoFunction: function (i) {
         return '-- ' + (i / 500) + ' --';
     },
 
