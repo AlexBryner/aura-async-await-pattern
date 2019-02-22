@@ -14,7 +14,7 @@ The design revolves around using a Generator *[Function*](https://developer.mozi
 
 If you are used to working with [Async Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) you will find this pattern to be very familiar.
 
-The generator is it is returning an [iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators) that returns values as it is processed, which is why it is necessary to instantiate the function and then call it to start retrieving values.  This is where the promise resolver function comes in that recursively calls the generator iterable.  In the promise resolver there is a check to determine if the iterable is done and if not the promise calls the iterable again for the next result.
+The generator is it is returning an [iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators) that returns values as it is processed, which is why it is necessary to instantiate the function and then call it to start retrieving values.  This is where the promise resolver function comes in that recursively calls the generator iterable.  In the promise resolver there is a check to determine if the iterable is done and if not calls the iterable again to yield the next result.
 
 
 
