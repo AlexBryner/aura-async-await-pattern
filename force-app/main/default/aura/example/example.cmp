@@ -1,12 +1,29 @@
-<aura:component>
+<aura:component implements="forceCommunity:availableForAllPageTypes">
 
-    <aura:attribute name="numbers" type="String[]" />
+    <aura:attribute name="orderedCol" type="String[]" />
+    <aura:attribute name="shuffledCol" type="String[]" />
+    <aura:attribute name="reversedCol" type="String[]" />
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
-    <aura:iteration items="{!v.numbers}" var="number">
-        <div>
-            <h1>{!number}</h1>
+    <div class="container">
+        <div class="column">
+            <h1>In Order</h1>
+            <aura:iteration items="{!v.orderedCol}" var="theStr">
+                <h3>{!theStr}</h3>
+            </aura:iteration>
         </div>
-    </aura:iteration>
+        <div class="column">
+            <h1>Reversed</h1>
+            <aura:iteration items="{!v.reversedCol}" var="theStr">
+                <h3>{!theStr}</h3>
+            </aura:iteration>
+        </div>
+        <div class="column">
+            <h1>Shuffled</h1>
+            <aura:iteration items="{!v.shuffledCol}" var="theStr">
+                <h3>{!theStr}</h3>
+            </aura:iteration>
+        </div>
+    </div>
 </aura:component>

@@ -1,32 +1,25 @@
 ({
     doInit: function (cmp, event, helper) {
 
-        console.log('Setting up a generator function to handle promise resolves in order');
-        let results = [];
+        // Generating 3 Separate Lists of Promises to ensure not resolving the same Promises in each of the generators
+        const orderedPromises = helper.getPromiseList('in-order');
+        const reversePromises = helper.getPromiseList('reverse');
+        const shuffledPromises = helper.getPromiseList('shuffle');
 
-        const generatorFunction = function* () {
-            const promises = helper.getPromiseList();
 
-            // Will Yield the Results in order of the Promise List
-            for (let i = 0; i < promises.length; i++) {
-                const res = yield promises[i];
-                console.log('Promised Result : ' + res);
-                results.push(res);
-            }
+        let orderedGenerator = helper.getGenerator(cmp, helper, orderedPromises, 'v.orderedCol');
+        const orderedIterable = orderedGenerator();
+        helper.promiseChain(orderedIterable, orderedIterable.next());
 
-            cmp.set('v.numbers', results);
-            console.log('Numbers : ' + cmp.get('v.numbers'));
 
-            // Adding One Last Yield for Demo Purposes and Setting the Numbers Again
-            console.log('Running One More Promise : 5000');
-            results.push(yield helper.asyncPromiseWrapper(helper.dummyFunction, 5000));
+        let reversedGenerator = helper.getGenerator(cmp, helper, reversePromises, 'v.reversedCol');
+        const reversedIterable = reversedGenerator();
+        helper.promiseChain(reversedIterable, reversedIterable.next());
 
-            cmp.set('v.numbers', results);
-            console.log('Numbers : ' + cmp.get('v.numbers'));
-        }
 
-        // Calls the Generator Function and then uses the Promise Chain Function to resolve each promise in order
-        let generatorIterable = generatorFunction();
-        helper.promiseChain(helper, generatorIterable, generatorIterable.next());
+        let shuffledGenerator = helper.getGenerator(cmp, helper, shuffledPromises, 'v.shuffledCol');
+        const shuffledIterable = shuffledGenerator();
+        helper.promiseChain(shuffledIterable, shuffledIterable.next());
+
     }
 });
